@@ -1,37 +1,19 @@
-let request = {
-    embeds: [
-        {
-            title: "test",
-            description: "test",
-            color: 1334988,
-            fields: [
-                {
-                    name: "Name",
-                    value: "test 1",
-                    inline: true
-                },
-                {
-                    name: "Time",
-                    value: "Test 2",
-                    inline: true
-                },
-                {
-                    name: "Accuracy",
-                    value: "Test" + "%",
-                    inline: false
-                }
-            ]
-        }
-    ]
+
+const url = "https://webhook-handler-mcyp.onrender.com"
+
+let requestData = {
+    user: "test",
+    accuracy: "test2",
+    time: "test3"
 }
 
-fetch("https://discord.com/api/webhooks/1250633753798377482/4rgMyymu5vEw5pE2itULfVdMlFKoy0LgPEDSDlJawfckfz0ZD0672-9Bly2RHx7yOBuR",{
-    method:"POST",
+fetch(url, {
+    method: "POST",
     headers: {
-        "content-type": "application/json"
+        'Content-Type': 'application/json'
     },
-    body: JSON.stringify(request)
-})
+    body: JSON.stringify(requestData)
+}) //TODO
 .then((res) => {
     console.log("hi");
 })

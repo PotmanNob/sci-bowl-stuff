@@ -4,7 +4,7 @@ const url = "https://discord.com/api/webhooks/1251676621337919530/rI0mwiHZ5ajzF-
 
 
 
-app.get("/", (req, res) => {
+app.post("/", (req, res) => {
     let reqBody = createEmbedMessage(JSON.parse(res.body.user), JSON.stringify(res.body.accuracy), JSON.parse(res.body.accuracy))
 
     fetch(url, {
