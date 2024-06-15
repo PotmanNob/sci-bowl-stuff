@@ -3,6 +3,7 @@ const input = document.getElementById("textInput");
 const factor1 = document.getElementById("factor1");
 const factor2 = document.getElementById("factor2");
 const timeBox = document.getElementById("timeBox");
+const url = "https://webhook-handler-mcyp.onrender.com";
 
 let remaining = [];
 let current;
@@ -63,7 +64,8 @@ input.addEventListener("keyup", function(event) {
 function displayNewValues() {
     if (remaining.length <= 0)
         {
-            sendResults();
+            sendResults("test", 10, 100);
+            alert("ok your done now");
         }
     console.log(remaining);
     current = remaining[0];
@@ -79,7 +81,7 @@ function sendResults(name, acc, time) {
         time: time
     }
 
-    fetch("URL GOES HERE", {
+    fetch(url, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
