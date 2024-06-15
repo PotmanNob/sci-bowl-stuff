@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const PORT = 8000;
 const url = "https://discord.com/api/webhooks/1251676621337919530/rI0mwiHZ5ajzF-Lez9dl7hw14q7BsFzlRXxhynofuqvqA8GuiwLAdOhTuTmniHZyINvk"
 
 
@@ -48,3 +49,6 @@ function createEmbedMessage(name, time, acc) {
     }
     return request; 
 }
+app.listen(PORT, () => {
+    console.log(`Listening to port ${PORT}`);
+})
