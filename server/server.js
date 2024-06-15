@@ -1,24 +1,25 @@
 const express = require("express");
 const app = express();
+const url = "https://discord.com/api/webhooks/1251676621337919530/rI0mwiHZ5ajzF-Lez9dl7hw14q7BsFzlRXxhynofuqvqA8GuiwLAdOhTuTmniHZyINvk"
 
 
 
 app.get("/", (req, res) => {
+    let reqBody = createEmbedMessage(JSON.parse(res.body.user), JSON.stringify(res.body.accuracy), JSON.parse(res.body.accuracy))
 
-
-    fetch("https://discord.com/api/webhooks/1250633753798377482/4rgMyymu5vEw5pE2itULfVdMlFKoy0LgPEDSDlJawfckfz0ZD0672-9Bly2RHx7yOBuR",{
+    fetch(url, {
         method:"POST",
         headers: {
             "content-type": "application/json"
         },
-        body: JSON.stringify(request)
+        body: JSON.stringify()
     }
-     ); //DISCORD WEBHOOK GOES HERE
+     );
     res.send("Done");
     
 })
 
-function createEmbedMessage() {
+function createEmbedMessage(name, time, acc) {
     let request = {
         embeds: [
             {
@@ -28,17 +29,17 @@ function createEmbedMessage() {
                 fields: [
                     {
                         name: "Name",
-                        value: "test 1",
+                        value: name,
                         inline: true
                     },
                     {
                         name: "Time",
-                        value: "Test 2",
+                        value: time,
                         inline: true
                     },
                     {
                         name: "Accuracy",
-                        value: "Test" + "%",
+                        value: acc + "%",
                         inline: false
                     }
                 ]
