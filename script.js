@@ -1,11 +1,16 @@
 // important variables
 const input = document.getElementById("textInput");
 const factor1 = document.getElementById("factor1");
-const factor2 = document.getElementById("factor2")
+const factor2 = document.getElementById("factor2");
+const timeBox = document.getElementById("timeBox");
 
 let remaining = [];
 let current;
 let errorCount = 0;
+
+let hours = 0;
+let minutes = 0;
+let seconds = 0;
 
 
 class Numbers {
@@ -34,6 +39,8 @@ for (let i = 0; i < remaining.length; i++) {
 }
 
 displayNewValues();
+setInterval(timer, 1000)
+//--------------------------------------------------
 
 
 //Event listener
@@ -78,4 +85,29 @@ function sendResults(name, acc, time) {
         },
         body: JSON.stringify(requestData)
     }); //TODO
+}
+function timer() {
+    let timeStr = "";
+
+    seconds++;
+
+    if (seconds >= 60) {
+            minutes++;
+            seconds = 0;
+        }
+    if (minutes >= 60)
+        {
+            hours++;
+            minutes = 0;
+        }
+
+    timeStr = `${hours}:`
+    if (minutes < 10)
+        timeStr += "0";
+    timeStr += `${minutes}:`
+    if (seconds < 10)
+        timeStr += "0";
+    timeStr += `${seconds}`;
+
+    timeBox.innerHTML = timeStr;
 }

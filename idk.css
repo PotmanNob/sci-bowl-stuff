@@ -31,3 +31,6 @@ body, html {
     width: 400px;
     height: 100px;
 }
+.timer {
+    font-size: 30px;
+}

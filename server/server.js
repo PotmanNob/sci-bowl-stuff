@@ -6,7 +6,6 @@ const app = express();
 app.get("/", (req, res) => {
 
 
-
     fetch("https://discord.com/api/webhooks/1250633753798377482/4rgMyymu5vEw5pE2itULfVdMlFKoy0LgPEDSDlJawfckfz0ZD0672-9Bly2RHx7yOBuR",{
         method:"POST",
         headers: {
