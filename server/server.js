@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 8000;
-const url = "https://discord.com/api/webhooks/1251676621337919530/rI0mwiHZ5ajzF-Lez9dl7hw14q7BsFzlRXxhynofuqvqA8GuiwLAdOhTuTmniHZyINvk"
+const webhook = "https://discord.com/api/webhooks/1251676621337919530/rI0mwiHZ5ajzF-Lez9dl7hw14q7BsFzlRXxhynofuqvqA8GuiwLAdOhTuTmniHZyINvk"
 
 app.use(express.json());
 
@@ -11,15 +11,15 @@ app.post("/", (req, res) => {
     console.log(req.body.accuracy);
     let reqBody = createEmbedMessage(req.body.user, req.body.time, req.body.accuracy)
 
-    fetch(url, {
-        method:"POST",
+    fetch(webhook, {
+        method: "POST",
         headers: {
-            "content-type": "application/json"
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify(createEmbedMessage("test1", "test2", "test3"))
-    })
-    .then((data) => {
-        console.log("successfully sent");
+        body: JSON.stringify(reqBody)
+    }) 
+    .then((res) => {
+        console.log("hi");
     })
     .catch( (err) => {
         console.log(err);
