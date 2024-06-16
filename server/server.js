@@ -6,7 +6,10 @@ const url = "https://discord.com/api/webhooks/1251676621337919530/rI0mwiHZ5ajzF-
 app.use(express.json());
 
 app.post("/", (req, res) => {
-    let reqBody = createEmbedMessage(req.body.user, req.body.accuracy, req.body.accuracy)
+    console.log(req.body.user);
+    console.log(req.body.accuracy);
+    console.log(req.body.time);
+    let reqBody = createEmbedMessage(req.body.user, req.body.time, req.body.accuracy)
 
     fetch(url, {
         method:"POST",
