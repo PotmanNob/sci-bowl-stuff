@@ -6,14 +6,14 @@ const url = "https://discord.com/api/webhooks/1251676621337919530/rI0mwiHZ5ajzF-
 
 
 app.post("/", (req, res) => {
-    let reqBody = createEmbedMessage(JSON.parse(res.body.user), JSON.stringify(res.body.accuracy), JSON.parse(res.body.accuracy))
+    let reqBody = createEmbedMessage(JSON.parse(req.body.user), JSON.stringify(req.body.accuracy), JSON.parse(req.body.accuracy))
 
     fetch(url, {
         method:"POST",
         headers: {
             "content-type": "application/json"
         },
-        body: JSON.stringify()
+        body: JSON.stringify(reqBody)
     }
      );
     res.send("Done");
