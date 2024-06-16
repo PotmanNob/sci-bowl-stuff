@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 8000;
-const webhook = "https://discord.com/api/webhooks/1251676621337919530/rI0mwiHZ5ajzF-Lez9dl7hw14q7BsFzlRXxhynofuqvqA8GuiwLAdOhTuTmniHZyINvk"
+const webhook = "https://discord.com/api/webhooks/1251735970710028380/VJo4FV7iCCGRHxhMrv6KlLwOpBtDrRqsyHGejQB4E5pRtQ825PrIOEnfWJWV8I8-HITk"
 
 app.use(express.json());
 
