@@ -27,8 +27,8 @@ class Numbers {
 //Runs on loading of page
 //-----------------------------------------------
 // Initiate the factors
-for (let i = 1; i <= 1; i++) {
-    for (let j = 1; j <= 1; j++) {
+for (let i = 1; i <= 100; i++) {
+    for (let j = 1; j <= 100; j++) {
         remaining.push(new Numbers(i, j));
     }
 }
