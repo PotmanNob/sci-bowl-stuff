@@ -17,8 +17,10 @@ app.post("/", (req, res) => {
             "content-type": "application/json"
         },
         body: JSON.stringify(reqBody)
-    }
-     );
+    })
+    .then((data) => {
+        console.log("successfully sent");
+    })
     res.json({message: "Done"});
     
 })
