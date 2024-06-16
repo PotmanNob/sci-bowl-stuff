@@ -3,10 +3,12 @@ const input = document.getElementById("textInput");
 const factor1 = document.getElementById("factor1");
 const factor2 = document.getElementById("factor2");
 const timeBox = document.getElementById("timeBox");
-const url = "https://webhook-handler-mcyp.onrender.com";
+const webhook = "https://discord.com/api/webhooks/1251676621337919530/rI0mwiHZ5ajzF-Lez9dl7hw14q7BsFzlRXxhynofuqvqA8GuiwLAdOhTuTmniHZyINvk";
+let name;
 
 let remaining = [];
 let current;
+let attempts = 0;
 let errorCount = 0;
 
 let hours = 0;
@@ -23,6 +25,7 @@ class Numbers {
 }
 
 //Runs on loading of page
+//-----------------------------------------------
 // Initiate the factors
 for (let i = 1; i <= 1; i++) {
     for (let j = 1; j <= 1; j++) {
@@ -39,6 +42,7 @@ for (let i = 0; i < remaining.length; i++) {
 
 }
 
+
 displayNewValues();
 setInterval(timer, 1000)
 //--------------------------------------------------
@@ -48,6 +52,7 @@ setInterval(timer, 1000)
 input.addEventListener("keyup", function(event) {
     if (event.key === "Enter") {
         let answer = input.value;
+        attempts++;
         input.value = "";
 
         if (answer == current.product) {
@@ -64,7 +69,7 @@ input.addEventListener("keyup", function(event) {
 function displayNewValues() {
     if (remaining.length <= 0)
         {
-            sendResults("test", 10, 100);
+            sendResults(prompt("Name"), timeBox.innerHTML, ((attempts- errorCount )/ attempts) * 100);
             alert("ok your done now");
         }
     console.log(remaining);
@@ -74,19 +79,14 @@ function displayNewValues() {
     factor2.innerHTML = current.factor2;
 }
 
-function sendResults(name, acc, time) {
-    let requestData = {
-        user: name,
-        accuracy: acc,
-        time: time
-    }
+function sendResults(name, time, acc) {
 
-    fetch(url, {
+    fetch(webhook, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(requestData)
+        body: JSON.stringify(createEmbedMessage(name, time, acc))
     }); //TODO
 }
 function timer() {
@@ -113,4 +113,34 @@ function timer() {
     timeStr += `${seconds}`;
 
     timeBox.innerHTML = timeStr;
+}
+
+function createEmbedMessage(name, time, acc) {
+    let request = {
+        embeds: [
+            {
+                title: "Multiplication Practice Tracker",
+                description: "lock in",
+                color: 1334988,
+                fields: [
+                    {
+                        name: "Name",
+                        value: name,
+                        inline: true
+                    },
+                    {
+                        name: "Time",
+                        value: time,
+                        inline: true
+                    },
+                    {
+                        name: "Accuracy",
+                        value: acc + "%",
+                        inline: false
+                    }
+                ]
+            }
+        ]
+    }
+    return request; 
 }

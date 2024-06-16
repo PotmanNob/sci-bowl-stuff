@@ -62,3 +62,8 @@ function createEmbedMessage(name, time, acc) {
     }
     return request; 
 }
+let testReq = {
+    embeds: [{
+        title: "test",
+    }]
+}

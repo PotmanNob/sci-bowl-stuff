@@ -18,15 +18,16 @@ let req = {
 
 let reqBody = createEmbedMessage(req.body.user, req.body.time, req.body.accuracy);
 
-fetch(url, {
+fetch(webhook, {
     method: "POST",
     headers: {
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify(requestData)
+    body: JSON.stringify(createEmbedMessage("test", "test", "test"))
 }) //TODO
 .then((res) => {
     console.log("hi");
+    console.log(res);
 })
 
 
