@@ -24,8 +24,8 @@ app.post("/", (req, res) => {
     .catch( (err) => {
         console.log(err);
     })
+
     res.json({message: "Done"});
-    
 })
 
 app.listen(port, () => {
