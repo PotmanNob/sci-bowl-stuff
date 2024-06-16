@@ -1,5 +1,5 @@
 
-const url = "https://webhook-handler-mcyp.onrender.com:8000"
+const url = "https://webhook-handler-mcyp.onrender.com"
 
 let requestData = {
     user: "test",
