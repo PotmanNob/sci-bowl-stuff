@@ -16,7 +16,7 @@ app.post("/", (req, res) => {
         headers: {
             "content-type": "application/json"
         },
-        body: JSON.stringify(reqBody)
+        body: JSON.stringify(createEmbedMessage("test1", "test2", "test3"))
     })
     .then((data) => {
         console.log("successfully sent");
