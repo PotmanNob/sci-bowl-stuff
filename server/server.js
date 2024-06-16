@@ -7,8 +7,8 @@ app.use(express.json());
 
 app.post("/", (req, res) => {
     console.log(req.body.user);
-    console.log(req.body.accuracy);
     console.log(req.body.time);
+    console.log(req.body.accuracy);
     let reqBody = createEmbedMessage(req.body.user, req.body.time, req.body.accuracy)
 
     fetch(url, {
