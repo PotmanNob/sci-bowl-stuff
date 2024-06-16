@@ -18,8 +18,9 @@ app.post("/", (req, res) => {
         },
         body: JSON.stringify(reqBody)
     }) 
-    .then((res) => {
+    .then((data) => {
         console.log("hi");
+        console.log(data);
     })
     .catch( (err) => {
         console.log(err);

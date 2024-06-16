@@ -2,11 +2,11 @@
 const url = "https://webhook-handler-mcyp.onrender.com"
 const webhook = "https://discord.com/api/webhooks/1251676621337919530/rI0mwiHZ5ajzF-Lez9dl7hw14q7BsFzlRXxhynofuqvqA8GuiwLAdOhTuTmniHZyINvk";
 
-// let requestData = {
-//     user: "test",
-//     accuracy: "test2",
-//     time: "test3"
-// }
+let requestData = {
+    user: "test",
+    accuracy: "test2",
+    time: "test3"
+}
 
 let req = {
     body: {
@@ -18,12 +18,12 @@ let req = {
 
 let reqBody = createEmbedMessage(req.body.user, req.body.time, req.body.accuracy);
 
-fetch(webhook, {
+fetch(url, {
     method: "POST",
     headers: {
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify(reqBody)
+    body: JSON.stringify(requestData)
 }) //TODO
 .then((res) => {
     console.log("hi");
