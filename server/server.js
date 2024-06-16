@@ -21,6 +21,9 @@ app.post("/", (req, res) => {
     .then((data) => {
         console.log("successfully sent");
     })
+    .catch( (err) => {
+        console.log(err);
+    })
     res.json({message: "Done"});
     
 })
