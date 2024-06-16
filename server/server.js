@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
-const PORT = 8000;
+const port = 8000;
 const url = "https://discord.com/api/webhooks/1251676621337919530/rI0mwiHZ5ajzF-Lez9dl7hw14q7BsFzlRXxhynofuqvqA8GuiwLAdOhTuTmniHZyINvk"
 
-
+app.use(express.json());
 
 app.post("/", (req, res) => {
     let reqBody = createEmbedMessage(JSON.parse(req.body.user), JSON.stringify(req.body.accuracy), JSON.parse(req.body.accuracy))
@@ -16,8 +16,12 @@ app.post("/", (req, res) => {
         body: JSON.stringify(reqBody)
     }
      );
-    res.send("Done");
+    res.json({message: "Done"});
     
+})
+
+app.listen(port, () => {
+    console.log(`Listening to port ${port}`);
 })
 
 function createEmbedMessage(name, time, acc) {
@@ -49,6 +53,3 @@ function createEmbedMessage(name, time, acc) {
     }
     return request; 
 }
-app.listen(PORT, () => {
-    console.log(`Listening to port ${PORT}`);
-})
